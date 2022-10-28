@@ -334,7 +334,7 @@ npx hardhat run scripts/deploy.js --network goerli
 ```
 GOERLI_URL = "https://eth-goerli.g.alchemy.com/v2/w7uVk4a8jPEe9TyfNC58qpZQ895vYOOs"
 API_KEY = "w7uVk4a8jPEe9TyfNC58qpZQ895vYOOs"
-PRIVATE_KEY="3c76390ae82ffca7f42b03c4bea28b53fc1749fecc035774441223880883885b"
+PRIVATE_KEY="我是私钥，不给看"
 CONTRACT_ADDRESS = "0xc4c6dc45bec88266e9749607839D3f4DDA47Dfa9"
 ```
 
