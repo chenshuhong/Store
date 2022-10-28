@@ -37,15 +37,15 @@ contract Store {
 
 我们先来一行行说明其功能：
 
-#### SPDX版权许可标识：
+#### SPDX 版权许可标识：
 
-智能合约的代码是开源的，任何人都可以在区块链上查看。由于提供源代码总是涉及到版权方面的法律问题，Solidity编译器鼓励使用机器可读的 [SPDX 许可标识](https://spdx.org/) 。 每个源文件都应该以这样的注释开始以说明其版权许可证。比如：`// SPDX-License-Identifier: MIT`
+智能合约的代码是开源的，任何人都可以在区块链上查看。由于提供源代码总是涉及到版权方面的法律问题，Solidity 编译器鼓励使用机器可读的 [SPDX 许可标识](https://spdx.org/) 。 每个源文件都应该以这样的注释开始以说明其版权许可证。比如：`// SPDX-License-Identifier: MIT`
 
 如果你不想指定一个许可证，或者如果源代码不开源，请使用特殊值 `UNLICENSED` ,这里的例子便是如此：`// SPDX-License-Identifier: UNLICENSED`
 
 #### 版本标识
 
-为了避免未来被可能引入不兼容更新的编译器所编译，源文件应该使用版本 标识pragma 所注解。版本号的形式通常是 `0.x.0` 或者 `x.0.0`。
+为了避免未来被可能引入不兼容更新的编译器所编译，源文件应该使用版本 标识 pragma 所注解。版本号的形式通常是 `0.x.0` 或者 `x.0.0`。
 
 这里是：`pragma solidity ^0.8.9;`表示源文件将既不允许低于` 0.8.9` 版本的编译器编译， 也不允许高于（包含） `0.9.0` 版本的编译器编译
 
@@ -74,7 +74,7 @@ contract Store {
 
 ##### 状态变量
 
-状态变量是永久地存储在合约存储中的值。`mapping (address => string) public stores;`定义了一个名为stores的映射，key为地址，value为字符串
+状态变量是永久地存储在合约存储中的值。`mapping (address => string) public stores;`定义了一个名为 stores 的映射，key 为地址，value 为字符串
 
 关键字`public`让这些变量可以从外部读取,它会给变量自动生成一个同名函数，允许你在这个合约之外访问这个状态变量的当前值
 
@@ -86,9 +86,9 @@ function stores(address account) external view returns (string) {
 }
 ```
 
-注意这里的函数需要一个参数，因为我们的变量是mapping，所以生成的函数的第一个参数是该mapping的key
+注意这里的函数需要一个参数，因为我们的变量是 mapping，所以生成的函数的第一个参数是该 mapping 的 key
 
-如果我们定义的public变量为uint，例如：`uint public storedData;`,那么其生成的同名函数，是不需要参数的
+如果我们定义的 public 变量为 uint，例如：`uint public storedData;`,那么其生成的同名函数，是不需要参数的
 
 ##### 函数
 
@@ -100,23 +100,23 @@ function set(string memory value) public {
 }
 ```
 
-这里定义了一个set公开函数，接收一个string类型的字符串，注意其要是memory类型
+这里定义了一个 set 公开函数，接收一个 string 类型的字符串，注意其要是 memory 类型
 
-函数作用是把stores里对应当前调用者，替换他的字符串
+函数作用是把 stores 里对应当前调用者，替换他的字符串
 
 ## hardhat
 
-我们知道以太坊上运行的的智能合约需要是EVM字节码，所以我们用solidity编写的代码还需要进一步编译，编译可以使用`solc`,但这里我们更推荐的是使用[hardhat](https://hardhat.org/)来开发我们智能合约。我们可以用它来编译、调试、测试和部署智能合约，是目前开发以太坊智能合约最主流，也是最受欢迎的方式。
+我们知道以太坊上运行的的智能合约需要是 EVM 字节码，所以我们用 solidity 编写的代码还需要进一步编译，编译可以使用`solc`,但这里我们更推荐的是使用[hardhat](https://hardhat.org/)来开发我们智能合约。我们可以用它来编译、调试、测试和部署智能合约，是目前开发以太坊智能合约最主流，也是最受欢迎的方式。
 
 ### 安装
 
-新建一个文件夹，在文件夹的根目录，通过`npm init -y`快速创建一个npm项目，当然你也可以使用其他包管理工具，npm的化建议使用7以上
+新建一个文件夹，在文件夹的根目录，通过`npm init -y`快速创建一个 npm 项目，当然你也可以使用其他包管理工具，npm 的化建议使用 7 以上
 
 ```
 npm install --save-dev hardhat
 ```
 
-通过`npx hardhat`然后选择JavaScript，初始化模板，根据提示，需要再安装 `@nomicfoundation/hardhat-toolbox`
+通过`npx hardhat`然后选择 JavaScript，初始化模板，根据提示，需要再安装 `@nomicfoundation/hardhat-toolbox`
 
 ![image-20221028020122101](https://gcore.jsdelivr.net/gh/chenshuhong/pic-bed/img/image-20221028020122101.png)
 
@@ -124,33 +124,31 @@ npm install --save-dev hardhat
 
 ![image-20221028020153940](https://gcore.jsdelivr.net/gh/chenshuhong/pic-bed/img/image-20221028020153940.png)
 
-
-
 其中：
 
-contracts:存放所有的合约，js模板会帮我们创建一个Lock.sol,用来锁定合约里的账户余额，到期才可以提取
+contracts:存放所有的合约，js 模板会帮我们创建一个 Lock.sol,用来锁定合约里的账户余额，到期才可以提取
 
 scripts:存放脚本，目前是部署脚本
 
 test:存放合约测试文件
 
-hardhat.config:hardhat的配置文件
+hardhat.config:hardhat 的配置文件
 
-我们使用vscode进行开发，推荐用hardhat的插件，https://hardhat.org/hardhat-vscode
+我们使用 vscode 进行开发，推荐用 hardhat 的插件，https://hardhat.org/hardhat-vscode
 
 ### 编译
 
-现在我们来把我们的Store.sol放进来，编写测试并部署
+现在我们来把我们的 Store.sol 放进来，编写测试并部署
 
-在contracts新建Store.sol,把我们一开始写好的代码放进去，运行`npx hardhat compile`,建议先删掉Lock.sol，因为contracts下的所有文件都会被编译
+在 contracts 新建 Store.sol,把我们一开始写好的代码放进去，运行`npx hardhat compile`,建议先删掉 Lock.sol，因为 contracts 下的所有文件都会被编译
 
-注意其在artifacts和cache生成了编译结果，生成内容我们先不管。如果我们不修改代码，再次编译，会提示 `Nothing to compile`
+注意其在 artifacts 和 cache 生成了编译结果，生成内容我们先不管。如果我们不修改代码，再次编译，会提示 `Nothing to compile`
 
 ![image-20221028024017748](https://gcore.jsdelivr.net/gh/chenshuhong/pic-bed/img/image-20221028024017748.png)
 
 ### 测试
 
-hardhat包含了Mocha、Chai 和 Ethers.js ，以支持测试，在tests目录下，新建Store.js
+hardhat 包含了 Mocha、Chai 和 Ethers.js ，以支持测试，在 tests 目录下，新建 Store.js
 
 ```js
 const { loadFixture } = require("@nomicfoundation/hardhat-network-helpers");
@@ -178,12 +176,10 @@ describe("Store", function () {
     expect(await store.stores(owner.address)).to.equal(ownerString);
     expect(await store.stores(otherAccount.address)).to.equal(otherString);
   });
-
 });
-
 ```
 
-我们用到了 `@nomicfoundation/hardhat-network-helpers` 的 loadFixture来生成区块链快照，这在我们有多个测例的情况下很有用，使得我们每个测试都能从该快照对应的区块链状态开始，运行`npx hardhat test`已启动测试
+我们用到了 `@nomicfoundation/hardhat-network-helpers` 的 loadFixture 来生成区块链快照，这在我们有多个测例的情况下很有用，使得我们每个测试都能从该快照对应的区块链状态开始，运行`npx hardhat test`已启动测试
 
 ![image-20221028030004563](https://gcore.jsdelivr.net/gh/chenshuhong/pic-bed/img/image-20221028030004563.png)
 
@@ -191,7 +187,7 @@ describe("Store", function () {
 
 测试成功后，我们可以尝试部署了
 
-hardhat内置了一个名为hardhat的特殊网络，模拟了区块链的特性，并提供了了很多工具方法方便操作该区块链，我们可以先部署到该环境验证下我们的部署脚本
+hardhat 内置了一个名为 hardhat 的特殊网络，模拟了区块链的特性，并提供了了很多工具方法方便操作该区块链，我们可以先部署到该环境验证下我们的部署脚本
 
 部署脚本放到了`scripts`目录下，我们命名为`deploy.js`
 
@@ -204,9 +200,7 @@ async function main() {
 
   await store.deployed();
 
-  console.log(
-    `deployed to ${lock.address}`
-  );
+  console.log(`deployed to ${lock.address}`);
 }
 
 // We recommend this pattern to be able to use async/await everywhere
@@ -231,7 +225,7 @@ main().catch((error) => {
 
 ![image-20221028105005368](https://gcore.jsdelivr.net/gh/chenshuhong/pic-bed/img/image-20221028105005368.png)
 
-在运行部署脚本的时候，我们可以指定network来表明我们要部署到哪个环境上
+在运行部署脚本的时候，我们可以指定 network 来表明我们要部署到哪个环境上
 
 `npx hardhat run scripts/deploy.js --network localhost`
 
@@ -243,7 +237,7 @@ main().catch((error) => {
 
 当 Hardhat 运行时，它会从当前工作目录开始搜索最近的 hardhat.config.js 文件。该文件通常位于项目的根目录中。一个空的 hardhat.config.js 足以让 Hardhat 工作。
 
-目前我们的config配置如下
+目前我们的 config 配置如下
 
 ```
 require("@nomicfoundation/hardhat-toolbox");
@@ -256,19 +250,17 @@ module.exports = {
 
 其有`defaultNetwork`, `networks`,`solidity`, `paths`, `mocha`这些配置
 
-这里讲一下networks配置
+这里讲一下 networks 配置
 
-如果我们想能部署到以太坊测试环境Goerli，我们可以在networks里配置Goerli环境
+如果我们想能部署到以太坊测试环境 Goerli，我们可以在 networks 里配置 Goerli 环境
 
-首先要有节点的url，我们使用 Alchemy 来获取一个节点的url，Alchemy是一个区块链节点服务商，通过他我们可以与以太坊链进行通信而无需运行我们自己的节点的 API，比如本地客户端。该平台还具有用于监视和分析的开发人员工具，查看https://docs.alchemy.com/docs/alchemy-quickstart-guide，加入Alchemy节点，拿到Goerli的RPC url，我的是：https://eth-goerli.g.alchemy.com/v2/w7uVk4a8jPEe9TyfNC58qpZQ895vYOOs，他就是我们network里goerli中url配置
+首先要有节点的 url，我们使用 Alchemy 来获取一个节点的 url，Alchemy 是一个区块链节点服务商，通过他我们可以与以太坊链进行通信而无需运行我们自己的节点的 API，比如本地客户端。该平台还具有用于监视和分析的开发人员工具，查看 https://docs.alchemy.com/docs/alchemy-quickstart-guide , 加入 Alchemy 节点，拿到 Goerli 的 RPC url，我的是：https://eth-goerli.g.alchemy.com/v2/w7uVk4a8jPEe9TyfNC58qpZQ895vYOOs ，他就是我们 network 里 goerli 中 url 配置
 
-为了使用该环境，我们还需要一些eth，前往https://goerlifaucet.com/获取一些实际没价值的eth，现在我们已经有eth了，图里是MetaMask钱包，可以在谷歌浏览器插件市场下载，https://chrome.google.com/webstore/detail/metamask/nkbihfbeogaeaoehlefnkodbefgpgknn，钱包能管理我们的区块链账户
+为了使用该环境，我们还需要一些 eth，前往 https://goerlifaucet.com/ 获取一些实际没价值的 eth，现在我们已经有 eth 了，图里是`MetaMask`钱包，可以在谷歌浏览器插件市场下载，https://chrome.google.com/webstore/detail/metamask/nkbihfbeogaeaoehlefnkodbefgpgknn ，钱包能管理我们的区块链账户
 
 ![image-20221028114558951](https://gcore.jsdelivr.net/gh/chenshuhong/pic-bed/img/image-20221028114558951.png)
 
-
-
-此外我们还要配置account，所以我们需要创建一个以太坊Goerli环境下的外部账户，通过metamask创建，从中导出我们的私钥
+此外我们还要配置 account，所以我们需要创建一个以太坊 Goerli 环境下的外部账户，通过 metamask 创建，从中导出我们的私钥
 
 ![image-20221028114651963](https://gcore.jsdelivr.net/gh/chenshuhong/pic-bed/img/image-20221028114651963.png)
 
@@ -285,7 +277,7 @@ GOERLI_URL = "https://eth-goerli.g.alchemy.com/v2/w7uVk4a8jPEe9TyfNC58qpZQ895vYO
 PRIVATE_KEY = "我是私钥，不给看"
 ```
 
-hardhat.config.js配置改为
+hardhat.config.js 配置改为
 
 ```
 require("dotenv").config();
@@ -305,7 +297,7 @@ module.exports = {
 
 ```
 
-部署到Goerli
+部署到 Goerli
 
 ```
 npx hardhat run scripts/deploy.js --network goerli
@@ -317,7 +309,7 @@ npx hardhat run scripts/deploy.js --network goerli
 
 ![image-20221028142414782](https://gcore.jsdelivr.net/gh/chenshuhong/pic-bed/img/image-20221028142414782.png)
 
-点进去可以看到该账号的余额，最近几次的交易情况，我们点进去Transactions第一个，那时我们刚刚部署合约产生的交易
+点进去可以看到该账号的余额，最近几次的交易情况，我们点进去 Transactions 第一个，那时我们刚刚部署合约产生的交易
 
 ![image-20221028142908915](https://gcore.jsdelivr.net/gh/chenshuhong/pic-bed/img/image-20221028142908915.png)
 
@@ -327,7 +319,7 @@ npx hardhat run scripts/deploy.js --network goerli
 
 ![image-20221028142708223](https://gcore.jsdelivr.net/gh/chenshuhong/pic-bed/img/image-20221028142708223.png)
 
-我们还可以到Alchemy dashboard里看刚刚交易更详细的信息
+我们还可以到 Alchemy dashboard 里看刚刚交易更详细的信息
 
 ![image-20221028143853930](https://gcore.jsdelivr.net/gh/chenshuhong/pic-bed/img/image-20221028143853930.png)
 
@@ -335,9 +327,9 @@ npx hardhat run scripts/deploy.js --network goerli
 
 ### 调用
 
-接下来用ethers来调用我们的合约，
+接下来用 ethers 来调用我们的合约，
 
-我们把合约地址和Alchemy的api key都写进环境变量里
+我们把合约地址和 Alchemy 的 api key 都写进环境变量里
 
 ```
 GOERLI_URL = "https://eth-goerli.g.alchemy.com/v2/w7uVk4a8jPEe9TyfNC58qpZQ895vYOOs"
@@ -346,15 +338,15 @@ PRIVATE_KEY="3c76390ae82ffca7f42b03c4bea28b53fc1749fecc035774441223880883885b"
 CONTRACT_ADDRESS = "0xc4c6dc45bec88266e9749607839D3f4DDA47Dfa9"
 ```
 
-在scripts里新建interact.js文件，用来与合约交互
+在 scripts 里新建 interact.js 文件，用来与合约交互
 
-要调用合约里的方法，我们需要hardhat编译后产生的合约ABI，其生成在`artifacts/contracts/Store.sol/Store.json`,我们先获取它
+要调用合约里的方法，我们需要 hardhat 编译后产生的合约 ABI，其生成在`artifacts/contracts/Store.sol/Store.json`,我们先获取它
 
 ```
 const contract = require("../artifacts/contracts/Store.sol/Store.json");
 ```
 
-ethers.js里实现合约交互，有三个概念需要知道
+ethers.js 里实现合约交互，有三个概念需要知道
 
 Provider：节点提供者，可对区块链进行读写访问。
 
@@ -362,7 +354,7 @@ Signer：一个能够签署交易的以太坊账户
 
 Contract：部署在链上的特定合约。
 
-我们使用了Alchemy，所以需要用到ether提供的AlchemyProvider
+我们使用了 Alchemy，所以需要用到 ether 提供的 AlchemyProvider
 
 ```js
 // provider - Alchemy
@@ -438,7 +430,6 @@ async function main() {
 }
 
 main();
-
 ```
 
 运行脚本：
@@ -446,8 +437,6 @@ main();
 ```
 npx hardhat run scripts/interact.js --network goerli
 ```
-
-
 
 ![image-20221028154605480](https://gcore.jsdelivr.net/gh/chenshuhong/pic-bed/img/image-20221028154605480.png)
 
@@ -461,4 +450,4 @@ npx hardhat run scripts/interact.js --network goerli
 
 至此我们就编写了一个带有简单读写功能的智能合约，并搭建了一个智能合约开发环境，能够编译，测试，部署，调用。最后，列一下用到的一些框架地址：
 
-[hardhat](https://hardhat.org/)，[Solidity](https://learnblockchain.cn/docs/solidity/)，[Ethers](https://learnblockchain.cn/docs/ethers.js/)，[Alchemy](https://dashboard.alchemy.com/)，[Goerli水龙头](https://goerlifaucet.com/)，[Goerli etherscan](https://goerli.etherscan.io/)
+[hardhat](https://hardhat.org/)，[Solidity](https://learnblockchain.cn/docs/solidity/)，[Ethers](https://learnblockchain.cn/docs/ethers.js/)，[Alchemy](https://dashboard.alchemy.com/)，[Goerli 水龙头](https://goerlifaucet.com/)，[Goerli etherscan](https://goerli.etherscan.io/)
