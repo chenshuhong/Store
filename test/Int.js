@@ -11,11 +11,13 @@ describe("Int", function () {
     const int = await Int.deploy();
     return { int, owner, otherAccount };
   }
-  it("contraryBit", async function () {
-    const { int, owner, otherAccount } =
-      await loadFixture(deployFixture);
-
-    expect(await int.contraryBit(0)).to.be;
+  describe("contraryBit", async function () {
+    it('0',async function(){
+        const { int, owner, otherAccount } =
+        await loadFixture(deployFixture);
+  
+      expect(await int.contraryBit(0)).to.equal(-1);
+    })
   });
 
 });
