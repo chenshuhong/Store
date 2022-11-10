@@ -20,8 +20,8 @@ describe("Store", function () {
     await store.set(ownerString);
     await store.connect(otherAccount).set(otherString);
 
+    expect(await store.stores(owner.address)).not.to.be.reverted;
     expect(await store.stores(owner.address)).to.equal(ownerString);
     expect(await store.stores(otherAccount.address)).to.equal(otherString);
   });
-
 });
