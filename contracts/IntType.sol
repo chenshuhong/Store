@@ -42,7 +42,7 @@ contract IntType {
 
     function moveBit() public view{
         uint8 ui8 = 127;
-        int8 i8= -1;
+        int8 i8 = -127;
         console.log("left move 127,move 1",ui8<<1);
         console.log("left move 127,move 2",ui8<<2);
         console.log("left move 127,move 3",ui8<<3);
